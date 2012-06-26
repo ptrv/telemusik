@@ -1,9 +1,8 @@
-
 //b = Buffer.read(s, Platform.resourceDir +/+ "sounds/a11wlk01.wav");
 
 b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/07_-_Seigaiha.wav");
 (
-SynthDef(\gagakuschaltung, { |out=0, buf=0, m1=12000, m2=12000, 
+SynthDef(\gagakuschaltung, { |out=0, buf=0, m1=12000, m2=12000,
     gain1=1.0, gain2=1.0, gain3=1.0|
 
     var gagaku = PlayBuf.ar(2, buf, loop:1);
@@ -22,24 +21,24 @@ SynthDef(\gagakuschaltung, { |out=0, buf=0, m1=12000, m2=12000,
 )
 
 a = Synth(\gagakuschaltung, b);
-a.set(\m1, 6000);
-a.set(\m2, 1000);
+a.set(\m1, 12000);
+a.set(\m2, 12000);
 
 (
 w = Window.new.front;
 c = Slider(w, Rect(20, 60, 20, 150))
-    .action_({
-        a.set(\gain1, c.value)
-        });
+.action_({
+        a.set(\gain1, c.value)
+});
 c.value = 1.0;
 d = Slider(w, Rect(50, 60, 20, 150))
-    .action_({
-        a.set(\gain2, d.value)
-        });
+.action_({
+        a.set(\gain2, d.value)
+});
 d.value = 1.0;
 e = Slider(w, Rect(80, 60, 20, 150))
-    .action_({
-        a.set(\gain3, e.value)
-        });
+.action_({
+        a.set(\gain3, e.value)
+});
 e.value = 1.0;
 )
