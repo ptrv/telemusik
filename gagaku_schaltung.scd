@@ -34,7 +34,7 @@ a.set(\m2, 12000);
 (
 a = Synth(\gagaku_schaltung, w);
 
-w = Window.new.front;
+w = Window.new;
 c = Slider(w, Rect(20, 60, 20, 150))
 .action_({
     a.set(\gain1, c.value)
@@ -52,13 +52,15 @@ e = Slider(w, Rect(80, 60, 20, 150))
 e.value = 1.0;
 f = Slider(w, Rect(120, 60, 20, 150))
 .action_({
-    a.set(\m1, f.value*11800 + 200)
+    a.set(\m1, f.value*12000)
 });
 f.value = 12000.0;
 g = Slider(w, Rect(150, 60, 20, 150))
 .action_({
-    a.set(\m2, g.value*11800 + 200)
+    a.set(\m2, g.value*12000)
 });
 g.value = 12000.0;
 
+w.onClose = { a.free;};
+w.front;
 )
