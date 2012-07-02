@@ -7,18 +7,21 @@ SynthDef(\struktur3, { arg out=0, ampindb=0, freq2=11350, freq3=12000,
     var osc1, osc2, osc3;
     var sigA, sigB;
     var ringIn1, ringIn2, ringOut;
-    // var env = Env([9500, 9500, 8500, 8500], [2, 3, 10], \lin);
+
+    // Envelope for oscilator frequency
     var envlvl = Control.names(\envlvl).kr([9500, 9500, 8500, 8500]);
     var envdur = Control.names(\envdur).kr([21, 3, 10]);
     var env = Env(envlvl, envdur, \lin);
     var freqenv = EnvGen.ar(env, doneAction: 2);
 
+    // Envelope for ringmodulator level
     var ringenvlvl = Control.names(\ringenvlvl).kr([0,0,1,0,0,1,1,0, 1, 0]);
     var ringenvdur = Control.names(\ringenvdur).kr(
         [8, 0.1,0.5, 10.4, 0.1,1.4, 0.5, 0.1,12.9 ]
     );
     var ringenv = Env(ringenvlvl, ringenvdur);
     var ringamp = EnvGen.ar(ringenv, doneAction: 0);
+
     osc1 = SinOsc.ar(freqenv);
     osc2 = SinOsc.ar(freq2);
     osc3 = SinOsc.ar(freq3);
@@ -123,6 +126,7 @@ SynthDef(\play_mokugyo, {| out = 0, bufnum = 0 |
 
 b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/07_-_Seigaiha.wav");
 b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/12_-_Motomeko_No_Uta.wav");
+b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/06_-_Banshikicho_Netori.wav");
 b.query
 (
 SynthDef(\gagaku_schaltung_struktur_3, { arg out=0, buf=0, m1=12000, m2=12000,
@@ -162,4 +166,4 @@ SynthDef(\gagaku_schaltung_struktur_3, { arg out=0, buf=0, m1=12000, m2=12000,
 }).send(s);
 )
 
-a = Synth(\gagaku_schaltung_struktur_3, [\buf, b, \startpos, 1000000]);
+a = Synth(\gagaku_schaltung_struktur_3, [\buf, b, \startpos, 1102500]);
