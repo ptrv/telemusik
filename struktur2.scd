@@ -64,7 +64,7 @@ SynthDef(\ringmod_s2_1, { |out=0, freq=12000, amp=1.0|
         \sin
     );
     var envgen = EnvGen.ar(env, doneAction: 2);
-    snd = snd * SinOsc.kr(envgen);
+    snd = snd * SinOsc.ar(envgen);
     Out.ar(out, snd * amp);
 }).send(s);
 
