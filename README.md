@@ -1,1 +1,1 @@
-# Telemusik in SuperCollider
+# Telemusik (Stockhausen) in SuperCollider
