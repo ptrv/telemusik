@@ -1,5 +1,7 @@
 // Struktur 4
 
+
+// TODO: add
 // a
 (
 
@@ -46,22 +48,26 @@ var numSines = 9;
 
 (
 SynthDef(\ringmod_s4_1, { |out=0, amp=1.0|
+    var snd;
     var in = SoundIn.ar(0);
-    var rmodlvls = Control.names(\rmodlvl).kr([18000, 12370, 7320, 7320]);
-    var rmoddurs = Control.names(\rmoddur).kr([3, 3, 8]);
+    var rmodlvls = Control.names(\rmodlvls).kr([18000, 12370, 7320, 7320]);
+    var rmoddurs = Control.names(\rmoddurs).kr([3, 3, 8]);
     var rmodenv = Env(rmodlvls, rmoddurs);
     var rmodenvgen = EnvGen.ar(rmodenv, doneAction: 2);
-    var snd = in * SinOsc.kr(rmodenvgen);
-    Out.ar(out, snd * amp);
+    // var snd = in * SinOsc.kr(rmodenvgen);
+    snd = in * SinOsc.ar(rmodenvgen);
+    Out.ar(out,snd * amp);
 }).send(s);
 )
 
+Synth(\ringmod_s4_1)
 // d
 (
 a = Synth(\ringmod_s4_1,
     [
-        \rmodlvl, [18000, 12370, 7320, 7320],
-        \rmoddur, [3, 3, 8]
+        \amp, 1.5,
+        \rmodlvls, [18000, 12370, 7320, 7320],
+        \rmoddurs, [3, 3, 8]
     ]
 );
 )
@@ -70,8 +76,9 @@ a = Synth(\ringmod_s4_1,
 (
 a = Synth(\ringmod_s4_1,
     [
-        \rmodlvl, [6480, 8900, 11085, 18000],
-        \rmoddur, [5, 4, 5]
+        \amp, 1.5,
+        \rmodlvls, [6480, 8900, 11085, 18000],
+        \rmoddurs, [5, 4, 5]
     ]
 );
 )
