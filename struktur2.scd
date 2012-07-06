@@ -55,7 +55,7 @@ s.freqscope
 
 
 (
-SynthDef(\ringmod_s2_1, { |out=0, freq=12000, amp=1.0|
+SynthDef(\ringmods21, { |out=0, freq=12000, amp=1.0|
     var in = SoundIn.ar(0);
     var snd = in * SinOsc.ar(freq);
     var env = Env(
@@ -71,15 +71,15 @@ SynthDef(\ringmod_s2_1, { |out=0, freq=12000, amp=1.0|
 )
 
 // play this at 00:00:26.000
-a = Synth(\ringmod_s2_1, [\freq, 12000  ]);
+a = Synth(\ringmods21, [\freq, 12000  ]);
 a.set(\freq, 12000)
 
 (
-SynthDef(\ringmod_s2_2, { |out=0, freq=12000|
+SynthDef(\ringmods22, { |out=0, freq=12000|
     var in = SoundIn.ar(0);
     var snd = in * SinOsc.ar(freq);
     Out.ar(out, snd);
 }).send(s);
 )
 
-b = Synth(\ringmod_s2_2, [\freq, 12110])
+b = Synth(\ringmods22, [\freq, 12110])

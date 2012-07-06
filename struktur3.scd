@@ -112,7 +112,7 @@ a = Synth(\struktur3,
 b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/mokugyo.wav");
 
 (
-SynthDef(\play_mokugyo, {| out = 0, bufnum = 0 |
+SynthDef(\playmokugyo, {| out = 0, bufnum = 0 |
     var trig;
     trig = Impulse.kr(XLine.kr(1, 5.25 , 20, doneAction: 2));
     Out.ar(out,
@@ -129,7 +129,7 @@ b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/12_-_Motomeko_No_
 b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/06_-_Banshikicho_Netori.wav");
 b.query
 (
-SynthDef(\gagaku_schaltung_struktur_3, { arg out=0, buf=0, m1=12000, m2=12000,
+SynthDef(\gagakuschaltungstruktur3, { arg out=0, buf=0, m1=12000, m2=12000,
     gain1=1.0, gain2=1.0, gain3=1.0, startpos=0;
 
     var gagaku, snd;
@@ -166,4 +166,4 @@ SynthDef(\gagaku_schaltung_struktur_3, { arg out=0, buf=0, m1=12000, m2=12000,
 }).send(s);
 )
 
-a = Synth(\gagaku_schaltung_struktur_3, [\buf, b, \startpos, 1102500]);
+a = Synth(\gagaku_schaltungstruktur3, [\buf, b, \startpos, 1102500]);

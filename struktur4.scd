@@ -47,7 +47,7 @@ var numSines = 9;
 )
 
 (
-SynthDef(\ringmod_s4_1, { |out=0, amp=1.0|
+SynthDef(\ringmods41, { |out=0, amp=1.0|
     var snd;
     var in = SoundIn.ar(0);
     var rmodlvls = Control.names(\rmodlvls).kr([18000, 12370, 7320, 7320]);
@@ -60,10 +60,10 @@ SynthDef(\ringmod_s4_1, { |out=0, amp=1.0|
 }).send(s);
 )
 
-Synth(\ringmod_s4_1)
+Synth(\ringmods41)
 // d
 (
-a = Synth(\ringmod_s4_1,
+a = Synth(\ringmods41,
     [
         \amp, 1.5,
         \rmodlvls, [18000, 12370, 7320, 7320],
@@ -74,7 +74,7 @@ a = Synth(\ringmod_s4_1,
 
 // e
 (
-a = Synth(\ringmod_s4_1,
+a = Synth(\ringmods41,
     [
         \amp, 1.5,
         \rmodlvls, [6480, 8900, 11085, 18000],

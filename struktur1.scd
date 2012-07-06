@@ -119,7 +119,7 @@
 );
 
 (
-SynthDef(\ringmod_s1, { |out=0, freq=12000|
+SynthDef(\ringmods1, { |out=0, freq=12000|
     var in = SoundIn.ar(0);
     var snd = in * SinOsc.ar(freq);
     Out.ar(out, snd);
@@ -127,4 +127,4 @@ SynthDef(\ringmod_s1, { |out=0, freq=12000|
 
 )
 
-a = Synth(\ringmod_s1);
+a = Synth(\ringmods1);
