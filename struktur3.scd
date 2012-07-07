@@ -109,7 +109,7 @@ a = Synth(\struktur3,
 
 // Mokugyo
 
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/mokugyo.wav");
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/mokugyo.wav".standardizePath);
 
 (
 SynthDef(\playmokugyo, {| out = 0, bufnum = 0 |
@@ -124,9 +124,9 @@ SynthDef(\playmokugyo, {| out = 0, bufnum = 0 |
 
 // Gagaku Schaltung
 
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/07_-_Seigaiha.wav");
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/12_-_Motomeko_No_Uta.wav");
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/06_-_Banshikicho_Netori.wav");
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/07_-_Seigaiha.wav".standardizePath);
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/12_-_Motomeko_No_Uta.wav".standardizePath);
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/06_-_Banshikicho_Netori.wav".standardizePath);
 b.query
 (
 SynthDef(\gagakuschaltungstruktur3, { arg out=0, buf=0, m1=12000, m2=12000,
@@ -166,4 +166,4 @@ SynthDef(\gagakuschaltungstruktur3, { arg out=0, buf=0, m1=12000, m2=12000,
 }).send(s);
 )
 
-a = Synth(\gagaku_schaltungstruktur3, [\buf, b, \startpos, 1102500]);
+a = Synth(\gagakuschaltungstruktur3, [\buf, b, \startpos, 1102500]);

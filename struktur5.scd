@@ -164,7 +164,7 @@ SynthDef(\gagakuschaltungstruktur5, { arg out=0, buf=0, m1=12000, m2=12000,
 )
 
 // Track 4
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/04_Genderan_Gamelan_Gong.wav");
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/04_Genderan_Gamelan_Gong.wav".standardizePath);
 
 (
 Synth(\gagakuschaltungstruktur5,
@@ -179,7 +179,7 @@ Synth(\gagakuschaltungstruktur5,
 )
 
 // Track 5
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/a1.wav");
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/a1.wav".standardizePath);
 
 (
 Synth(\gagakuschaltungstruktur5,

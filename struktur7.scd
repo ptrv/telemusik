@@ -1,6 +1,6 @@
 // Struktur 7
 
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/s67_1_2_3_4_full.wav");
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/s67_1_2_3_4_full.wav".standardizePath);
 b.play
 b.free
 (

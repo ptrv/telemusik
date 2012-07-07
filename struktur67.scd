@@ -155,7 +155,7 @@ synth2 = Synth(\struktur67,
 
 // Track 5
 
-b = Buffer.read(s, "/home/peter/scwork/sub_repos/telemusik/snd/s67_1_2_3_4.wav");
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/s67_1_2_3_4.wav".standardizePath);
 b.play
 (
 SynthDef(\ringmods67, { |out=0, buf=0, amp=1|
