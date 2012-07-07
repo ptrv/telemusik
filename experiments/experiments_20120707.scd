@@ -70,4 +70,5 @@ a.do({ arg item, i;
 c.size
 c.plot
 b = Buffer.loadCollection(s, c);
-{ Osc.ar(b, Line.ar(0.5, 0.5, 10, doneAction: 2)) * 0.3 }.play;
+{ Osc.ar(b, XLine.ar(300, 0.1, 10, doneAction: 2)) * 0.3 }.play;
+{ Osc.ar(b, EnvGen.ar(Env([300, 300], [5]), doneAction: 2)) * 0.3 }.play;
