@@ -195,3 +195,39 @@ SynthDef(\ringmods67ampenv, { |out=0, buf=0, amp=1|
 Synth(\ringmods67ampenv, [\buf, b, \amp, 3])
 
 // samples
+
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/s67_samples.wav".standardizePath);
+b.play
+(
+SynthDef(\gagakuschaltungstruktur67, { arg out=0, buf=0, m1=12000, m2=12000,
+    gain1=1.0, gain2=1.0, gain3=1.0, startpos=0, amp=1.0;
+
+    var gagaku, snd;
+    var mod1, mod2;
+    var filter1, filter2, filter3;
+    var sigA, sigB, sigC, sigD;
+
+    var ringbamplvl = Control.names(\ringbamplvl).kr([0, 0, 0.8, 0, 0, 0.8, 0, 0, 0.8, 0, 0, 0.8, 0, 0, 0.9, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0 ]);
+    var ringbampdur = Control.names(\ringbampdur).kr([1.7, 0.3, 0.3, 0.4, 0.3, 0.3, 1.4, 0.3, 0.3, 0.4, 0.3, 0.3, 0.4, 0.3, 0.3,0.4, 0.3, 0.3, 1.4, 0.3, 0.3, 1.4, 0.3, 0.3, 0.7 ]);
+
+    var ringbampenv = Env(ringbamplvl, ringbampdur, \welch);
+    var ringbampenvgen = EnvGen.ar(ringbampenv, doneAction: 2);
+    var ringblvl = ringbampenvgen;
+
+    gagaku = PlayBuf.ar(1, buf, loop:1, startPos: startpos);
+    mod1 = SinOsc.ar(m1);
+    mod2 = SinOsc.ar(12000 + LFNoise0.ar(1, 50));
+    filter1 = LPF.ar(gagaku, 6000);
+    sigA = filter1 * mod1;
+    filter2 = HPF.ar(sigA, 6000);
+    sigB = filter2 * mod2;
+    sigB = sigB * gain2;
+    filter3 = LPF.ar(sigB, 5500);
+    sigD = filter3 * ringblvl;
+    sigC = sigA * (0.dbamp);
+    snd = sigC + sigD;
+    Out.ar(out, snd*0.5*amp);
+}).send(s);
+)
+
+Synth(\gagakuschaltungstruktur67, [\buf, b, \amp, 1.5]);
