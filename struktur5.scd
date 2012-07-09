@@ -179,7 +179,7 @@ Synth(\gagakuschaltungstruktur5,
 )
 
 // Track 5
-b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/a1.wav".standardizePath);
+b = Buffer.read(s, "~/scwork/sub_repos/telemusik/snd/B5_Two_Manyanga_Drum_Rhythms_Nyamwezi.wav".standardizePath);
 
 (
 Synth(\gagakuschaltungstruktur5,
