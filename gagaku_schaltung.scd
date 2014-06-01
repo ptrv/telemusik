@@ -16,9 +16,9 @@ SynthDef(\gagaku_schaltung, { arg out=0, buf=0, m1=12000, m2=12000,
     mod1 = SinOsc.ar(m1);
     mod2 = SinOsc.ar(m2);
     filter1 = LPF.ar(gagaku, 6000);
-    sigA = filter1 * mod1;
+    sigA = (filter1 * mod1) + filter1;
     filter2 = HPF.ar(sigA, 6000);
-    sigB = filter2 * mod2;
+    sigB = (filter2 * mod2) + filter2;
     sigB = sigB * gain2;
     filter3 = LPF.ar(sigB, 5500);
     sigD = filter3 * gain3;
